@@ -1,0 +1,703 @@
+<div class="quiz-container" style="max-width: 800px; margin: 0px auto; font-family: 'Quicksand', sans-serif; background: white; border-radius: 12px;">
+  <!-- Header fijo -->
+  <div class="quiz-header" style="position: sticky; top: 0; background: white; z-index: 10; margin-bottom: 20px;">
+    <div class="quiz-progress" style="width: 100%; height: 12px; background: #e0e0e0; border-radius: 2px; position: relative;">
+      <div class="progress-bar" style="width: 0%; height: 100%; background: #d50032; border-radius: 2px; margin-bottom: 30px; transition: width 0.3s ease;margin-top:20px;"></div>
+      <span class="progress-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 10px; font-weight: 600; color: #1a1a1a; z-index: 5; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">0%</span>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 12px; margin-top: 6px;">
+      <button id="backBtn" style="display: none; width: 40px; height: 40px; margin-top: 8px; background: transparent; border: 2px solid #ddd; border-radius: 50%; color: #555; cursor: pointer; font-family: 'Quicksand', sans-serif; font-size: 14px; transition: all 0.2s; display: flex; align-items: center; justify-content: center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+      </button>
+      <div class="quiz-header-content" style="flex: 1;">
+        <h2 class="quiz-title" style="font-family: 'Exo', sans-serif; font-size: 28px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">¿Qué tipo de transporte necesitas?</h2>
+        <!-- <p class="quiz-subtitle" style="color: #555; margin-bottom: 0;">Selecciona la categoría que mejor se ajuste</p> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido scrolleable -->
+  <div class="quiz-content" style="max-height: 90vh; overflow-y: auto; padding-right: 10px;">
+
+    <!-- Paso 1: Tipo de transporte -->
+    <div class="question-slide" data-step="1" data-title="¿Qué tipo de transporte necesitas?" data-subtitle="Selecciona la categoría que mejor se ajuste" style="display: block;">
+      <div class="options-grid" style="display: grid; gap: 12px;">
+        <button type="button" class="option-btn" data-value="Camión completo - Carga en Pallets" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Camión completo - Carga en Pallets</button>
+        <button type="button" class="option-btn" data-value="Camión completo - Carga a granel" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Camión completo - Carga a granel</button>
+        <button type="button" class="option-btn" data-value="Mudanza (empresa o particular)" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Mudanza (empresa o particular)</button>
+        <button type="button" class="option-btn" data-value="Carga sobredimensionada / Proyecto especial" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Carga sobredimensionada / Proyecto especial</button>        
+        <button type="button" class="option-btn" data-value="Otro" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Otro</button>
+      </div>
+    </div>
+
+    <!-- Paso 2: Peso -->
+    <div class="question-slide" data-step="2" data-title="¿Cuánto pesa tu carga?" data-subtitle="Selecciona el rango de peso aproximado" style="display: none;">
+      <div style="display: flex; align-items: flex-start; gap: 10px; background: #fff5f5; border: 1.5px solid #d50032; border-radius: 8px; padding: 12px 14px; margin-bottom: 20px;">
+        <span style="font-size: 18px; line-height: 1.4;">⚠️</span>
+        <p style="color: #c0003a; font-size: 13px; margin: 0; line-height: 1.5;">
+          <strong style="color: #a0002a;">Solo trabajamos con cargas industriales, comerciales y mudanzas.</strong><br>
+          No movemos cargas pequeñas ni encomiendas.
+        </p>
+      </div>
+      <div class="options-grid" style="display: grid; gap: 12px;">
+        <button type="button" class="peso-btn" data-value="1.000 kg – 5.000 kg" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">1.000 kg – 5.000 kg</button>
+        <button type="button" class="peso-btn" data-value="5.001 kg – 15.000 kg" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">5.001 kg – 15.000 kg</button>
+        <button type="button" class="peso-btn" data-value="15.001 kg – 27.999 kg" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">15.001 kg – 27.999 kg</button>
+        <button type="button" class="peso-btn" data-value="28.000 kg o más" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">28.000 kg o más</button>
+      </div>
+    </div>
+
+    <!-- Paso 3: Región Origen -->
+    <div class="question-slide" data-step="3" data-title="¿Desde dónde?" data-subtitle="Selecciona la región de origen de tu carga" style="display: none;">
+      <div style="margin-bottom: 20px;">
+        <h3 class="region-group-title">NORTE</h3>
+        <div style="display: grid; gap: 10px;">
+          <button type="button" class="region-btn" data-value="Arica y Parinacota" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Arica y Parinacota</button>
+          <button type="button" class="region-btn" data-value="Tarapacá" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Tarapacá</button>
+          <button type="button" class="region-btn" data-value="Antofagasta" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Antofagasta</button>
+          <button type="button" class="region-btn" data-value="Atacama" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Atacama</button>
+          <button type="button" class="region-btn" data-value="Coquimbo" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Coquimbo</button>
+        </div>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <h3 class="region-group-title">CENTRO</h3>
+        <div style="display: grid; gap: 10px;">
+          <button type="button" class="region-btn" data-value="Valparaíso" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Valparaíso</button>
+          <button type="button" class="region-btn" data-value="Metropolitana" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Metropolitana</button>
+          <button type="button" class="region-btn" data-value="O'Higgins" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">O'Higgins</button>
+          <button type="button" class="region-btn" data-value="Maule" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Maule</button>
+          <button type="button" class="region-btn" data-value="Ñuble" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Ñuble</button>
+        </div>
+      </div>
+      <div>
+        <h3 class="region-group-title">SUR</h3>
+        <div style="display: grid; gap: 10px;">
+          <button type="button" class="region-btn" data-value="Biobío" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Biobío</button>
+          <button type="button" class="region-btn" data-value="Araucanía" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Araucanía</button>
+          <button type="button" class="region-btn" data-value="Los Ríos" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Los Ríos</button>
+          <button type="button" class="region-btn" data-value="Los Lagos" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Los Lagos</button>
+          <button type="button" class="region-btn" data-value="Aysén" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Aysén</button>
+          <button type="button" class="region-btn" data-value="Magallanes" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Magallanes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 9: Región Destino -->
+    <div class="question-slide" data-step="9" data-title="¿Hacia dónde?" data-subtitle="Selecciona la región de destino de tu carga" style="display: none;">
+      <div style="margin-bottom: 20px;">
+        <h3 class="region-group-title">NORTE</h3>
+        <div style="display: grid; gap: 10px;">
+          <button type="button" class="region-destino-btn" data-value="Arica y Parinacota" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Arica y Parinacota</button>
+          <button type="button" class="region-destino-btn" data-value="Tarapacá" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Tarapacá</button>
+          <button type="button" class="region-destino-btn" data-value="Antofagasta" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Antofagasta</button>
+          <button type="button" class="region-destino-btn" data-value="Atacama" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Atacama</button>
+          <button type="button" class="region-destino-btn" data-value="Coquimbo" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Coquimbo</button>
+        </div>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <h3 class="region-group-title">CENTRO</h3>
+        <div style="display: grid; gap: 10px;">
+          <button type="button" class="region-destino-btn" data-value="Valparaíso" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Valparaíso</button>
+          <button type="button" class="region-destino-btn" data-value="Metropolitana" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Metropolitana</button>
+          <button type="button" class="region-destino-btn" data-value="O'Higgins" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">O'Higgins</button>
+          <button type="button" class="region-destino-btn" data-value="Maule" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Maule</button>
+          <button type="button" class="region-destino-btn" data-value="Ñuble" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Ñuble</button>
+        </div>
+      </div>
+      <div>
+        <h3 class="region-group-title">SUR</h3>
+        <div style="display: grid; gap: 10px;">
+          <button type="button" class="region-destino-btn" data-value="Biobío" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Biobío</button>
+          <button type="button" class="region-destino-btn" data-value="Araucanía" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Araucanía</button>
+          <button type="button" class="region-destino-btn" data-value="Los Ríos" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Los Ríos</button>
+          <button type="button" class="region-destino-btn" data-value="Los Lagos" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Los Lagos</button>
+          <button type="button" class="region-destino-btn" data-value="Aysén" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Aysén</button>
+          <button type="button" class="region-destino-btn" data-value="Magallanes" style="padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Magallanes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 10: Comuna Origen (solo mudanza) -->
+    <div class="question-slide" data-step="10" data-title="¿Desde qué comuna?" data-subtitle="Selecciona la comuna de origen" style="display: none;">
+      <div class="options-grid" style="display: grid; gap: 12px;">
+        <button type="button" class="comuna-origen-btn" data-value="La Reina"    style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">La Reina</button>
+        <button type="button" class="comuna-origen-btn" data-value="Las Condes"  style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Las Condes</button>
+        <button type="button" class="comuna-origen-btn" data-value="Lo Barnechea" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Lo Barnechea</button>
+        <button type="button" class="comuna-origen-btn" data-value="Providencia" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Providencia</button>
+        <button type="button" class="comuna-origen-btn" data-value="Vitacura"    style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Vitacura</button>
+        <button type="button" class="comuna-origen-btn" data-value="Otra"        style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Otra</button>
+      </div>
+    </div>
+
+    <!-- Paso 4: Modalidad de transporte -->
+    <div class="question-slide" data-step="4" data-title="Modalidad de transporte" data-subtitle="¿Cómo necesitas el servicio?" style="display: none;">
+      <div class="options-grid" style="display: grid; gap: 12px;">
+        <button type="button" class="modalidad-btn" data-value="Sólo ida" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">➡️ Sólo ida</button>
+        <button type="button" class="modalidad-btn" data-value="Ida y vuelta (Round trip)" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">🔄 Ida y vuelta (Round trip)</button>
+        <button type="button" class="modalidad-btn" data-value="Arriendo mensual" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">📅 Arriendo mensual</button>
+        <button type="button" class="modalidad-btn" data-value="Multipunto" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">📍 Multipunto</button>
+      </div>
+    </div>
+
+    <!-- Paso 5: Detalles de la carga -->
+    <div class="question-slide" data-step="5" data-title="Detalles de la carga" data-subtitle="Cuéntanos más sobre lo que necesitas transportar" style="display: none;">
+      <textarea id="mensaje" rows="5" placeholder="Opcional: Describe lo que necesitas transportar, dimensiones, fechas, condiciones especiales, etc." style="width: 100%; padding: 14px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; font-family: 'Quicksand', sans-serif; resize: vertical; background: #f5f5f5; color: #1a1a1a;"></textarea>
+      <button type="button" class="next-btn" style="margin-top: 24px; width: 100%; padding: 16px; background: #d50032; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Quicksand', sans-serif;">Continuar</button>
+    </div>
+
+    <!-- Paso 6: Datos de Contacto -->
+    <div class="question-slide" data-step="6" data-title="" data-subtitle="" style="display: none;">
+      <form id="quiz-contact-form" autocomplete="on" onsubmit="return false;">
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; color: #444; margin-bottom: 8px; font-size: 14px;">Nombre completo</label>
+          <input type="text" id="nombreCompleto" placeholder="Juan Pérez González" autocomplete="name"
+            style="width: 100%; padding: 14px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; font-family: 'Quicksand', sans-serif; background: #f5f5f5; color: #1a1a1a;">
+          <span id="errorNombre" style="display: none; color: #d50032; font-size: 13px; margin-top: 4px;">Por favor ingresa tu nombre completo</span>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; color: #444; margin-bottom: 8px; font-size: 14px;">Celular</label>
+          <div style="position: relative;">
+            <span style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: 6px; color: #555; font-size: 15px; font-family: 'Quicksand', sans-serif; white-space: nowrap;">
+              <img src="https://cdn.chiletransportistas.com/ChileTransportistas-assets/bandera-chile.webp"
+                alt="Bandera de Chile"
+                width="24" height="16"
+                style="width: 24px; height: 16px; object-fit: cover; border-radius: 2px; display: inline-block;">
+              +569
+            </span>
+            <input type="tel" id="celular" placeholder="12345678" maxlength="8" autocomplete="tel"
+              style="width: 100%; padding: 14px 14px 14px 90px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; font-family: 'Quicksand', sans-serif; background: #f5f5f5; color: #1a1a1a;">
+          </div>
+          <span id="errorCelular" style="display: none; color: #d50032; font-size: 13px; margin-top: 4px;">Ingresa un celular válido (8 dígitos)</span>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+            <label style="display: block; color: #444; margin-bottom: 8px; font-size: 14px;">Email <span style="color: #999; font-weight: 400; font-size: 12px;">(opcional)</span></label>            <input type="email" id="email" placeholder="tu@email.com" autocomplete="email"
+            style="width: 100%; padding: 14px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; font-family: 'Quicksand', sans-serif; background: #f5f5f5; color: #1a1a1a;">
+          <span id="errorEmail" style="display: none; color: #d50032; font-size: 13px; margin-top: 4px;">Ingresa un email válido</span>
+          <p style="color: #888; font-size: 12px; margin-top: 6px; line-height: 1.5;">🔒 Solo usamos tus datos para enviarte cotizaciones. Sin spam.</p>
+        </div>
+
+        <button type="button" id="submitBtn" style="margin-top: 24px; width: 100%; padding: 16px; background: #d50032; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Quicksand', sans-serif;">Cotizar Gratis</button>
+      </form>
+    </div>
+
+    <!-- Paso 7: Confirmación con timer -->
+    <div class="question-slide" data-step="7" data-title="¡Listo!" data-subtitle="Recibirás las cotizaciones en tu email pronto." style="display: none; text-align: center;">
+      <div style="width: 72px; height: 72px; background: #d50032; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 36px; color: #fff;">✓</div>
+
+      <h3 style="font-family: 'Exo', sans-serif; color: #1a1a1a; font-size: 22px; margin-bottom: 12px;">¡Tu solicitud fue recibida!</h3>
+      <p style="color: #555; font-size: 15px; line-height: 1.6; margin-bottom: 28px;">
+        Un ejecutivo se pondrá en contacto contigo en <strong style="color: #1a1a1a;">pocos minutos</strong> para atender tu requerimiento de transporte.
+      </p>
+
+      <!-- Countdown ring -->
+      <div style="position: relative; width: 100px; height: 100px; margin: 0 auto 16px;">
+        <svg width="100" height="100" style="transform: rotate(-90deg);">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="#e0e0e0" stroke-width="6"/>
+          <circle id="countdownRing" cx="50" cy="50" r="44" fill="none" stroke="#d50032" stroke-width="6"
+            stroke-dasharray="276.46" stroke-dashoffset="0"
+            style="transition: stroke-dashoffset 1s linear;"/>
+        </svg>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+          <span id="countdownNumber" style="font-family: 'Exo', sans-serif; font-size: 32px; font-weight: 700; color: #1a1a1a;">10</span>
+        </div>
+      </div>
+      <p style="color: #777; font-size: 13px; margin-bottom: 28px;">Serás redirigido a chiletransportistas.com en <span id="countdownLabel">10</span> segundos…</p>
+
+      <a href="https://www.chiletransportistas.com/" 
+         style="display: inline-block; padding: 14px 32px; background: #d50032; color: #fff; border-radius: 8px; font-size: 15px; font-weight: 600; font-family: 'Quicksand', sans-serif; text-decoration: none; transition: background 0.2s;"
+         onmouseover="this.style.background='#b00028'" onmouseout="this.style.background='#d50032'">
+        Seguir explorando →
+      </a>
+    </div>
+
+    <!-- Paso 8: Tipo de inmueble (solo mudanza) -->
+    <div class="question-slide" data-step="8" data-title="¿Qué tipo de inmueble?" data-subtitle="Selecciona la opción que aplique" style="display: none;">
+      <div class="options-grid" style="display: grid; gap: 12px;">
+        <button type="button" class="inmueble-btn" data-value="Departamento" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Departamento</button>
+        <button type="button" class="inmueble-btn" data-value="Casa" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Casa</button>
+        <button type="button" class="inmueble-btn" data-value="Oficina" style="padding: 22px 16px; border: 2px solid #ddd; border-radius: 8px; background: #f5f5f5; color: #1a1a1a; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">Oficina</button>        </div>
+    </div>
+  </div>
+</div>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body { background: white; }
+#footer { display: none; }
+.quiz-content::-webkit-scrollbar { width: 6px; }
+.quiz-content::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 3px; }
+.quiz-content::-webkit-scrollbar-thumb { background: #d50032; border-radius: 3px; }
+.quiz-content::-webkit-scrollbar-thumb:hover { background: #b00028; }
+
+.question-slide {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.question-slide.active { opacity: 1; transform: translateX(0); }
+.question-slide.exit { opacity: 0; transform: translateX(-30px); }
+
+/* ── Radio indicator (single-select buttons) ── */
+.option-btn, .peso-btn, .modalidad-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.option-btn::before, .peso-btn::before, .modalidad-btn::before {
+  content: '';
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #bbb;
+  border-radius: 50%;
+  background: #fff;
+  transition: all 0.2s;
+}
+.option-btn:hover::before, .peso-btn:hover::before, .modalidad-btn:hover::before {
+  border-color: #d50032;
+}
+.option-btn.selected::before, .peso-btn.selected::before, .modalidad-btn.selected::before {
+  border-color: #d50032;
+  background: #d50032;
+  box-shadow: inset 0 0 0 3px #fbd0d8;
+}
+
+.option-btn:hover, .peso-btn:hover, .modalidad-btn:hover {
+  border-color: #d50032 !important;
+  background: #fce8ec !important;
+}
+.option-btn.selected, .peso-btn.selected, .modalidad-btn.selected {
+  border-color: #d50032 !important;
+  background: #fbd0d8 !important;
+}
+
+/* ── Checkbox indicator (multi-select: inmueble) ── */
+.inmueble-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.inmueble-btn::before {
+  content: '';
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #bbb;
+  border-radius: 50%;
+  background: #fff;
+  transition: all 0.2s;
+}
+.inmueble-btn:hover::before {
+  border-color: #d50032;
+}
+.inmueble-btn.selected::before {
+  border-color: #d50032;
+  background: #d50032;
+  box-shadow: inset 0 0 0 3px #fbd0d8;
+}
+.inmueble-btn:hover { border-color: #d50032 !important; background: #fce8ec !important; }
+.inmueble-btn.selected { border-color: #d50032 !important; background: #fbd0d8 !important; }
+
+.next-btn:hover, #submitBtn:hover, #nextStep3Btn:hover { background: #b00028 !important; }
+#backBtn:hover { background: #f5f5f5 !important; border-color: #d50032 !important; color: #d50032 !important; }
+::placeholder { color: #aaa; }
+input.error, textarea.error { border-color: #d50032 !important; }
+.button.js-submit-button.button--alt-accent-bg { display: none !important; }
+
+@media (max-width: 600px) {
+  .quiz-container { padding: 0 16px !important; }
+  .quiz-title, .quiz-subtitle { text-align: center !important; }
+}
+/* Título de grupo de regiones */
+.region-group-title {
+font-family: 'Exo', sans-serif;
+font-size: 11px;
+font-weight: 700;
+color: #d50032;
+letter-spacing: 0.12em;
+margin-bottom: 10px;
+padding-bottom: 6px;
+border-bottom: 1px solid #e0e0e0;
+}
+
+/* Radio para region-btn y region-destino-btn */
+.region-btn, .region-destino-btn {
+display: flex;
+align-items: center;
+gap: 14px;
+}
+.region-btn::before, .region-destino-btn::before {
+content: '';
+flex-shrink: 0;
+width: 18px;
+height: 18px;
+border: 2px solid #bbb;
+border-radius: 50%;
+background: #fff;
+transition: all 0.2s;
+}
+.region-btn:hover::before, .region-destino-btn:hover::before {
+border-color: #d50032;
+}
+.region-btn.selected::before, .region-destino-btn.selected::before {
+border-color: #d50032;
+background: #d50032;
+box-shadow: inset 0 0 0 3px #fbd0d8;
+}
+.region-btn:hover, .region-destino-btn:hover {
+border-color: #d50032 !important;
+background: #fce8ec !important;
+}
+.region-btn.selected, .region-destino-btn.selected {
+border-color: #d50032 !important;
+background: #fbd0d8 !important;
+}
+.quiz-subtitle {
+margin-top: 2px !important;
+margin-bottom: 0 !important;
+}
+.quiz-title {
+margin-bottom: 2px !important;
+margin-top: 8px !important;
+}
+
+
+.comuna-origen-btn {
+display: flex;
+align-items: center;
+gap: 14px;
+}
+.comuna-origen-btn::before {
+content: '';
+flex-shrink: 0;
+width: 18px;
+height: 18px;
+border: 2px solid #bbb;
+border-radius: 50%;
+background: #fff;
+transition: all 0.2s;
+}
+.comuna-origen-btn:hover::before { border-color: #d50032; }
+.comuna-origen-btn.selected::before {
+border-color: #d50032;
+background: #d50032;
+box-shadow: inset 0 0 0 3px #fbd0d8;
+}
+.comuna-origen-btn:hover   { border-color: #d50032 !important; background: #fce8ec !important; }
+.comuna-origen-btn.selected { border-color: #d50032 !important; background: #fbd0d8 !important; }
+</style>
+
+
+<script>
+(function() {
+let currentStep = 1;
+const formData  = {};
+
+// ── Flujos ────────────────────────────────────────────────
+// paso 3 = origen, paso 9 = destino
+const flujoNormal  = [3, 9, 1, 2, 5, 6, 7];
+const flujoMudanza = [10, 9, 8, 5, 6, 7];
+
+function esMudanza() { return formData.categoria === 'Mudanza (empresa o particular)'; }
+function flujoActual() { return esMudanza() ? flujoMudanza : flujoNormal; }
+function totalPasos()  { return flujoActual().length - 1; }
+
+function stepSiguiente() {
+  const flujo = flujoActual();
+  const idx   = flujo.indexOf(currentStep);
+  return idx !== -1 && idx < flujo.length - 1 ? flujo[idx + 1] : null;
+}
+function stepAnterior() {
+  const flujo = flujoActual();
+  const idx   = flujo.indexOf(currentStep);
+  return idx > 0 ? flujo[idx - 1] : null;
+}
+
+// ── Tracking ──────────────────────────────────────────────
+const sessionId   = 'sess_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwPi00s3Tm__aSycybftIDa8kFWn9bMztvN0Wcdo0Hkz3RK__J5d6tEffqiqx6O-rPQAQ/exec';
+
+function sendPartialData(step) {
+  try {
+    fetch(WEB_APP_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sessionId, step,
+        variante: window.__abVariante || 'a',
+        categoria: formData.categoria      || null,
+        peso:      formData.peso           || null,
+        inmueble:  formData.inmueble       || null,
+        origen:    formData.regionOrigen   || null,
+        destino:   formData.regionDestino  || null,
+        modalidad: formData.modalidad      || null,
+        mensaje:   formData.mensaje        || null,
+        nombre:    formData.nombreCompleto || null,
+        celular:   formData.celular        || null,
+        email:     formData.email          || null,
+      })
+    });
+  } catch(err) { console.warn('[CHTR] sendPartialData error:', err); }
+}
+
+// ── UI helpers ────────────────────────────────────────────
+function updateProgress() {
+  const flujo    = flujoActual();
+  const idx      = flujo.indexOf(currentStep);
+  const progreso = idx <= 0 ? 0 : (idx / totalPasos()) * 100;
+  document.querySelector('.progress-bar').style.width  = progreso + '%';
+  document.querySelector('.progress-text').textContent = Math.round(progreso) + '%';
+}
+
+function updateHeader(title, subtitle) {
+  const titleEl    = document.querySelector('.quiz-title');
+  const subtitleEl = document.querySelector('.quiz-subtitle');
+  if (titleEl)    titleEl.textContent    = title;
+  if (subtitleEl) subtitleEl.textContent = subtitle;
+}
+
+function updateBackButton() {
+  document.getElementById('backBtn').style.display =
+    (currentStep === 1 || currentStep === 7) ? 'none' : 'block';
+}
+
+function showSlide(step, direction = 'forward') {
+  const allSlides    = document.querySelectorAll('.question-slide');
+  const currentSlide = document.querySelector(`[data-step="${currentStep}"]`);
+  const targetSlide  = document.querySelector(`[data-step="${step}"]`);
+  if (!targetSlide) return;
+
+  if (currentSlide) { currentSlide.classList.add('exit'); currentSlide.classList.remove('active'); }
+
+  setTimeout(() => {
+    allSlides.forEach(s => { s.style.display = 'none'; s.classList.remove('active', 'exit'); });
+    targetSlide.style.display = 'block';
+    targetSlide.offsetHeight;
+    targetSlide.classList.add('active');
+
+    // Título dinámico en paso destino
+    let title    = targetSlide.dataset.title;
+    let subtitle = targetSlide.dataset.subtitle;
+    
+    if (step === 9 && formData.regionOrigen) {
+      title    = `¿Desde ${formData.regionOrigen} hacia dónde?`;
+      subtitle = 'Selecciona la región de destino';
+    }
+    // Título dinámico paso 6
+    if (step === 6) {
+      title    = esMudanza()
+        ? 'Deja tu mudanza en manos de expertos'
+        : 'Ingresa tus datos para mover tu carga con expertos';
+      subtitle = '';
+    }
+    updateHeader(title, subtitle);
+
+    document.querySelector('.quiz-content').scrollTop = 0;
+    if (step === 7) startCountdown();
+  }, direction === 'back' ? 200 : 100);
+
+  updateProgress();
+  updateBackButton();
+}
+
+function nextStep() {
+  const siguiente = stepSiguiente();
+  if (siguiente !== null) { currentStep = siguiente; showSlide(currentStep, 'forward'); }
+}
+function prevStep() {
+  const anterior = stepAnterior();
+  if (anterior !== null) { currentStep = anterior; showSlide(currentStep, 'back'); }
+}
+
+function startCountdown() {
+  const totalSeconds = 10, circumference = 276.46;
+  let secondsLeft = totalSeconds;
+  const ring = document.getElementById('countdownRing');
+  const numberEl = document.getElementById('countdownNumber');
+  const labelEl  = document.getElementById('countdownLabel');
+  function tick() {
+    numberEl.textContent = secondsLeft;
+    if (labelEl) labelEl.textContent = secondsLeft;
+    ring.style.strokeDashoffset = circumference * (1 - secondsLeft / totalSeconds);
+    if (secondsLeft <= 0) { window.location.href = 'https://www.chiletransportistas.com/'; return; }
+    secondsLeft--;
+    setTimeout(tick, 1000);
+  }
+  tick();
+}
+
+document.getElementById('backBtn').addEventListener('click', prevStep);
+
+// ── Paso 1: Categoría ─────────────────────────────────────
+document.querySelectorAll('.option-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+    formData.categoria = this.dataset.value;
+    delete formData.peso; delete formData.inmueble;
+    sendPartialData(1);
+    setTimeout(() => {
+      if (esMudanza()) {
+        currentStep = 10;
+        showSlide(10, 'forward');
+      } else {
+        nextStep();
+      }
+    }, 300);
+  });
+});
+
+// ── Paso 2: Peso ──────────────────────────────────────────
+document.querySelectorAll('.peso-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.peso-btn').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+    formData.peso = this.dataset.value;
+    sendPartialData(2);
+    setTimeout(() => nextStep(), 300);
+  });
+});
+
+// ── Paso 8: Inmueble (mudanza) ────────────────────────────
+document.querySelectorAll('.inmueble-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.inmueble-btn').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+    formData.inmueble = this.dataset.value;
+    sendPartialData(8);
+    setTimeout(() => {
+      currentStep = 8;
+      nextStep();
+    }, 300);
+  });
+});
+
+// ── Paso 10: Comuna Origen (mudanza) ─────────────────────
+document.querySelectorAll('.comuna-origen-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.comuna-origen-btn').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+    formData.regionOrigen = this.dataset.value;
+    sendPartialData(10);
+    setTimeout(() => nextStep(), 300);
+  });
+});
+
+// ── Paso 3: Región Origen ─────────────────────────────────
+document.querySelectorAll('.region-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+    formData.regionOrigen = this.dataset.value;
+    sendPartialData(3);
+    setTimeout(() => nextStep(), 300);
+  });
+});
+
+// ── Paso 9: Región Destino ────────────────────────────────
+document.querySelectorAll('.region-destino-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.region-destino-btn').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+    formData.regionDestino = this.dataset.value;
+    sendPartialData(9);
+    setTimeout(() => nextStep(), 300);
+  });
+});
+
+// ── Paso 5: Mensaje ───────────────────────────────────────
+document.querySelector('[data-step="5"] .next-btn').addEventListener('click', function() {
+  const mensaje = document.getElementById('mensaje').value.trim();
+  formData.mensaje = mensaje || ' ';
+  document.getElementById('mensaje').classList.remove('error');
+  sendPartialData(5);
+  nextStep();
+});
+
+function validarCelular(c) { return /^[0-9]{8}$/.test(c); }
+function validarEmail(e)   { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+document.getElementById('celular').addEventListener('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+// ── Paso 6: Submit ────────────────────────────────────────
+document.getElementById('submitBtn').addEventListener('click', function() {
+  const nombre  = document.getElementById('nombreCompleto').value.trim();
+  const celular = document.getElementById('celular').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  let valido = true;
+
+  document.querySelectorAll('input').forEach(i => i.classList.remove('error'));
+  document.querySelectorAll('[id^="error"]').forEach(s => s.style.display = 'none');
+
+  if (!nombre || nombre.length < 3) { document.getElementById('nombreCompleto').classList.add('error'); document.getElementById('errorNombre').style.display = 'block'; valido = false; }
+  if (!validarCelular(celular))     { document.getElementById('celular').classList.add('error');        document.getElementById('errorCelular').style.display = 'block'; valido = false; }
+  if (email && !validarEmail(email)) { document.getElementById('email').classList.add('error'); document.getElementById('errorEmail').style.display = 'block'; valido = false; }
+  if (!valido) return;
+
+  formData.nombreCompleto = nombre;
+  formData.celular        = '+569' + celular;
+  formData.email = email || 'sin-email@gmail.com';
+  sendPartialData(6);
+
+  // Fecha en hora Santiago
+  const ahora = new Date();
+  const fechaSantiago = ahora.toLocaleString('es-CL', {
+    timeZone: 'America/Santiago',
+    day: '2-digit', month: '2-digit', year: 'numeric',
+    hour: '2-digit', minute: '2-digit', second: '2-digit',
+    hour12: false
+  });
+  formData.fecha = fechaSantiago;
+
+  const upFormCampos = [
+    { key: 'nombreCompleto', idUpForm: 'FNAMEUPFORM' },
+    { key: 'celular',        idUpForm: 'TELUPFORM' },
+    { key: 'email',          idUpForm: 'EMAILUPFORM' },
+    { key: 'regionOrigen',   idUpForm: 'REGIONORIGENUPFORM' },
+    { key: 'regionDestino',  idUpForm: 'REGIONDESTINOUPFORM' },
+    { key: 'peso',           idUpForm: 'PESOUPFORM' },
+    { key: 'categoria',      idUpForm: 'CATEGORIAUPFORM' },
+    { key: 'modalidad',      idUpForm: 'MODALIDADUPFORM' },
+    { key: 'fecha', idUpForm: 'FECHAUPFORM' },
+    { key: 'mensaje',        idUpForm: 'MENSAJEUPFORM' },
+  ];
+  upFormCampos.forEach(campo => {
+    const upInput = document.getElementById(campo.idUpForm);
+    if (upInput && formData[campo.key] !== undefined) upInput.value = formData[campo.key];
+  });
+  const origenInput = document.getElementById('ORIGENUPFORM');
+  if (origenInput) origenInput.value = 'COTIZAR-TRANSPORTE-DE-CARGA';
+
+  document.querySelector('.button.js-submit-button.button--alt-accent-bg')?.click();
+
+  if (typeof fbq === 'function') {
+    fbq('track', 'Lead');
+  }
+  nextStep();
+});
+
+updateProgress();
+updateBackButton();
+
+// Auto-inicio por query param
+const params = new URLSearchParams(window.location.search);
+if (params.get('tipo') === 'mudanza') {
+  formData.categoria = 'Mudanza (empresa o particular)';
+  currentStep = 10;
+  showSlide(10, 'forward');
+} else {
+  currentStep = 3;
+  showSlide(3);
+}
+
+})();
+</script>

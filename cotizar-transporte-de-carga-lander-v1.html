@@ -1,0 +1,452 @@
+<div class="quiz-container" style="max-width: 800px; margin: 50px auto; font-family: 'Quicksand', sans-serif; background: #222222; border-radius: 12px;">
+    <!-- Header fijo -->
+    <div class="quiz-header" style="position: sticky; top: 0; background: #222222; z-index: 10; margin-bottom: 20px;">
+      <div class="quiz-progress" style="width: 100%; height: 12px; background: #555; border-radius: 2px; position: relative;">
+        <div class="progress-bar" style="width: 0%; height: 100%; background: #d50032; border-radius: 2px; margin-bottom: 30px; transition: width 0.3s ease;"></div>
+        <span class="progress-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 10px; font-weight: 600; color: #fff; z-index: 5; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">0%</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button id="backBtn" style="display: none; width: 40px; height: 40px; background: transparent; border: 2px solid #555; border-radius: 50%; color: #ccc; cursor: pointer; font-family: 'Quicksand', sans-serif; font-size: 14px; transition: all 0.2s;">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+        </button>
+        <div class="quiz-header-content" style="flex: 1;">
+          <h2 class="quiz-title" style="font-family: 'Exo', sans-serif; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px;">¿Desde dónde?</h2>
+          <p class="quiz-subtitle" style="color: #ccc; margin-bottom: 0;">Selecciona la región de origen</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Contenido scrolleable -->
+    <div class="quiz-content" style="max-height: 90vh; overflow-y: auto; padding-right: 10px;">
+      <!-- Pregunta 1: Región Origen -->
+      <div class="question-slide active" data-step="1" data-title="¿Desde dónde?" data-subtitle="Selecciona la región de origen de tu carga" style="display: block;">
+        <!-- Norte -->
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-family: 'Exo', sans-serif; font-size: 16px; font-weight: 600; color: #d50032; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #555;">🏜️ NORTE</h3>
+          <div style="display: grid; gap: 10px;">
+            <button type="button" class="region-btn" data-value="Arica y Parinacota" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Arica y Parinacota</button>
+            <button type="button" class="region-btn" data-value="Tarapacá" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Tarapacá</button>
+            <button type="button" class="region-btn" data-value="Antofagasta" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Antofagasta</button>
+            <button type="button" class="region-btn" data-value="Atacama" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Atacama</button>
+            <button type="button" class="region-btn" data-value="Coquimbo" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Coquimbo</button>
+          </div>
+        </div>
+  
+        <!-- Centro -->
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-family: 'Exo', sans-serif; font-size: 16px; font-weight: 600; color: #d50032; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #555;">🏙️ CENTRO</h3>
+          <div style="display: grid; gap: 10px;">
+            <button type="button" class="region-btn" data-value="Valparaíso" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Valparaíso</button>
+            <button type="button" class="region-btn" data-value="Metropolitana" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Metropolitana</button>
+            <button type="button" class="region-btn" data-value="O'Higgins" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">O'Higgins</button>
+            <button type="button" class="region-btn" data-value="Maule" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Maule</button>
+            <button type="button" class="region-btn" data-value="Ñuble" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Ñuble</button>
+          </div>
+        </div>
+  
+        <!-- Sur -->
+        <div>
+          <h3 style="font-family: 'Exo', sans-serif; font-size: 16px; font-weight: 600; color: #d50032; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #555;">🌲 SUR</h3>
+          <div style="display: grid; gap: 10px;">
+            <button type="button" class="region-btn" data-value="Biobío" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Biobío</button>
+            <button type="button" class="region-btn" data-value="Araucanía" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Araucanía</button>
+            <button type="button" class="region-btn" data-value="Los Ríos" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Los Ríos</button>
+            <button type="button" class="region-btn" data-value="Los Lagos" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Los Lagos</button>
+            <button type="button" class="region-btn" data-value="Aysén" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Aysén</button>
+            <button type="button" class="region-btn" data-value="Magallanes" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Magallanes</button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Pregunta 2: Región Destino -->
+      <div class="question-slide" data-step="2" data-title="¿Hacia dónde?" data-subtitle="Selecciona la región de destino de tu carga" style="display: none;">
+        <!-- Norte -->
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-family: 'Exo', sans-serif; font-size: 16px; font-weight: 600; color: #d50032; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #555;">🏜️ NORTE</h3>
+          <div style="display: grid; gap: 10px;">
+            <button type="button" class="region-destino-btn" data-value="Arica y Parinacota" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Arica y Parinacota</button>
+            <button type="button" class="region-destino-btn" data-value="Tarapacá" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Tarapacá</button>
+            <button type="button" class="region-destino-btn" data-value="Antofagasta" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Antofagasta</button>
+            <button type="button" class="region-destino-btn" data-value="Atacama" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Atacama</button>
+            <button type="button" class="region-destino-btn" data-value="Coquimbo" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Coquimbo</button>
+          </div>
+        </div>
+  
+        <!-- Centro -->
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-family: 'Exo', sans-serif; font-size: 16px; font-weight: 600; color: #d50032; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #555;">🏙️ CENTRO</h3>
+          <div style="display: grid; gap: 10px;">
+            <button type="button" class="region-destino-btn" data-value="Valparaíso" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Valparaíso</button>
+            <button type="button" class="region-destino-btn" data-value="Metropolitana" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Metropolitana</button>
+            <button type="button" class="region-destino-btn" data-value="O'Higgins" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">O'Higgins</button>
+            <button type="button" class="region-destino-btn" data-value="Maule" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Maule</button>
+            <button type="button" class="region-destino-btn" data-value="Ñuble" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Ñuble</button>
+          </div>
+        </div>
+  
+        <!-- Sur -->
+        <div>
+          <h3 style="font-family: 'Exo', sans-serif; font-size: 16px; font-weight: 600; color: #d50032; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #555;">🌲 SUR</h3>
+          <div style="display: grid; gap: 10px;">
+            <button type="button" class="region-destino-btn" data-value="Biobío" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Biobío</button>
+            <button type="button" class="region-destino-btn" data-value="Araucanía" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Araucanía</button>
+            <button type="button" class="region-destino-btn" data-value="Los Ríos" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Los Ríos</button>
+            <button type="button" class="region-destino-btn" data-value="Los Lagos" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Los Lagos</button>
+            <button type="button" class="region-destino-btn" data-value="Aysén" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Aysén</button>
+            <button type="button" class="region-destino-btn" data-value="Magallanes" style="padding: 14px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 15px; font-family: 'Quicksand', sans-serif;">Magallanes</button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Pregunta 3: Categoría -->
+      <div class="question-slide" data-step="3" data-title="¿Qué tipo de transporte necesitas?" data-subtitle="Selecciona la categoría que mejor se ajuste" style="display: none;">
+        <div class="options-grid" style="display: grid; gap: 12px;">
+          <button type="button" class="option-btn" data-value="Encomiendas" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">📦 Encomiendas</button>
+          <button type="button" class="option-btn" data-value="Grua" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">🚜 Grúa</button>
+          <button type="button" class="option-btn" data-value="Mineria" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">⛏️ Minería</button>
+          <button type="button" class="option-btn" data-value="Mudanzas" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">🏠 Mudanzas</button>
+          <button type="button" class="option-btn" data-value="Transporte de Carga General" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">🚚 Carga General</button>
+          <button type="button" class="option-btn" data-value="Transporte de Carga Refrigerada" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">❄️ Carga Refrigerada</button>
+          <button type="button" class="option-btn" data-value="Transporte de Carga Seca" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">📦 Carga Seca</button>
+          <button type="button" class="option-btn" data-value="Transporte de Cargas Peligrosas" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">⚠️ Cargas Peligrosas</button>
+          <button type="button" class="option-btn" data-value="Transporte de Cargas Sobredimensionadas" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">📏 Cargas Sobredimensionadas</button>
+          <button type="button" class="option-btn" data-value="Transporte de Contenedores" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">🚢 Contenedores</button>
+          <button type="button" class="option-btn" data-value="Transporte de Vehiculos" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">🚗 Vehículos</button>
+          <button type="button" class="option-btn" data-value="Ultima Milla" style="padding: 16px; border: 2px solid #555; border-radius: 8px; background: #444; color: #fff; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 16px; font-family: 'Quicksand', sans-serif;">🏘️ Última Milla</button>
+        </div>
+      </div>
+  
+      <!-- Pregunta 4: Detalles -->
+      <div class="question-slide" data-step="4" data-title="Cuéntanos más" data-subtitle="¿Qué necesitas transportar?" style="display: none;">
+        <textarea id="mensaje" rows="4" placeholder="Describe lo que necesitas transportar, dimensiones, peso, fechas, etc." style="width: 100%; padding: 14px; border: 2px solid #555; border-radius: 8px; font-size: 16px; font-family: 'Quicksand', sans-serif; resize: vertical; background: #444; color: #fff;"></textarea>
+        <button type="button" class="next-btn" style="margin-top: 24px; width: 100%; padding: 14px; background: #d50032; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Quicksand', sans-serif;">Continuar</button>
+      </div>
+  
+      <!-- Pregunta 5: Datos de Contacto -->
+      <div class="question-slide" data-step="5" data-title="Tus datos de contacto" data-subtitle="Para enviarte las cotizaciones" style="display: none;">
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; color: #ccc; margin-bottom: 8px; font-size: 14px;">Nombre completo</label>
+          <input type="text" id="nombreCompleto" placeholder="Juan Pérez González" style="width: 100%; padding: 14px; border: 2px solid #555; border-radius: 8px; font-size: 16px; font-family: 'Quicksand', sans-serif; background: #444; color: #fff;">
+          <span id="errorNombre" style="display: none; color: #d50032; font-size: 13px; margin-top: 4px;">Por favor ingresa tu nombre completo</span>
+        </div>
+  
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; color: #ccc; margin-bottom: 8px; font-size: 14px;">Celular</label>
+          <div style="position: relative;">
+            <span style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #aaa; font-size: 16px;">🇨🇱 +569</span>
+            <input type="tel" id="celular" placeholder="12345678" maxlength="8" style="width: 100%; padding: 14px 14px 14px 95px; border: 2px solid #555; border-radius: 8px; font-size: 16px; font-family: 'Quicksand', sans-serif; background: #444; color: #fff;">
+          </div>
+          <span id="errorCelular" style="display: none; color: #d50032; font-size: 13px; margin-top: 4px;">Ingresa un celular válido (8 dígitos)</span>
+        </div>
+  
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; color: #ccc; margin-bottom: 8px; font-size: 14px;">Email</label>
+          <input type="email" id="email" placeholder="tu@email.com" style="width: 100%; padding: 14px; border: 2px solid #555; border-radius: 8px; font-size: 16px; font-family: 'Quicksand', sans-serif; background: #444; color: #fff;">
+          <span id="errorEmail" style="display: none; color: #d50032; font-size: 13px; margin-top: 4px;">Ingresa un email válido</span>
+        </div>
+  
+        <button type="button" id="submitBtn" style="margin-top: 24px; width: 100%; padding: 14px; background: #d50032; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Quicksand', sans-serif;">Obtener Cotización</button>
+      </div>
+  
+      <!-- Confirmación -->
+      <div class="question-slide" data-step="6" data-title="¡Listo!" data-subtitle="Recibirás las cotizaciones en tu email pronto." style="display: none; text-align: center;">
+        <div style="width: 64px; height: 64px; background: #d50032; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px; color: #fff;">✓</div>
+      </div>
+    </div>
+  </div>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Exo:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/ionicons@7.2.1/dist/ionicons/ionicons.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.2.1/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.2.1/dist/ionicons/ionicons.js"></script>
+  
+  <style>
+  body {
+    background: #222222;
+  }
+  #footer {
+    display: none;
+  }
+  .quiz-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  .quiz-content::-webkit-scrollbar-track {
+    background: #444;
+    border-radius: 3px;
+  }
+  .quiz-content::-webkit-scrollbar-thumb {
+    background: #d50032;
+    border-radius: 3px;
+  }
+  .quiz-content::-webkit-scrollbar-thumb:hover {
+    background: #b00028;
+  }
+  
+  /* Transiciones entre preguntas */
+  .question-slide {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  
+  .question-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .question-slide.exit {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  
+  .region-btn:hover, .region-destino-btn:hover, .option-btn:hover {
+    border-color: #d50032 !important;
+    background: #3a1519 !important;
+  }
+  .region-btn.selected, .region-destino-btn.selected, .option-btn.selected {
+    border-color: #d50032 !important;
+    background: #5a1f27 !important;
+  }
+  .next-btn:hover, #submitBtn:hover {
+    background: #b00028 !important;
+  }
+  .next-btn:disabled, #submitBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  #backBtn:hover {
+    background: #444 !important;
+    border-color: #d50032 !important;
+    color: #d50032 !important;
+  }
+  
+  ::placeholder {
+    color: #888;
+  }
+  input.error {
+    border-color: #d50032 !important;
+  }
+
+  .button.js-submit-button.button--alt-accent-bg {
+    display: none !important;
+  }
+  </style>
+  
+  <script>
+  (function() {
+    let currentStep = 1;
+    const totalSteps = 5;
+    const formData = {};
+      
+    function updateProgress() {
+      const progress = ((currentStep - 1) / totalSteps) * 100;
+      document.querySelector('.progress-bar').style.width = progress + '%';
+      document.querySelector('.progress-text').textContent = Math.round(progress) + '%';
+    }
+  
+    function updateHeader(title, subtitle) {
+      document.querySelector('.quiz-title').textContent = title;
+      document.querySelector('.quiz-subtitle').textContent = subtitle;
+    }
+  
+    function updateBackButton() {
+      const backBtn = document.getElementById('backBtn');
+      if (currentStep === 1 || currentStep === 6) {
+        backBtn.style.display = 'none';
+      } else {
+        backBtn.style.display = 'block';
+      }
+    }
+  
+    function showSlide(step, direction = 'forward') {
+      const allSlides = document.querySelectorAll('.question-slide');
+      const currentSlide = document.querySelector(`[data-step="${currentStep}"]`);
+      const targetSlide = document.querySelector(`[data-step="${step}"]`);
+      
+      if (!targetSlide) return;
+  
+      // Añadir clase de salida
+      if (currentSlide) {
+        currentSlide.classList.add('exit');
+        currentSlide.classList.remove('active');
+      }
+  
+      // Pequeño delay para la transición
+      setTimeout(() => {
+        allSlides.forEach(slide => {
+          slide.style.display = 'none';
+          slide.classList.remove('active', 'exit');
+        });
+  
+        targetSlide.style.display = 'block';
+        
+        // Forzar reflow
+        targetSlide.offsetHeight;
+        
+        targetSlide.classList.add('active');
+        
+        const title = targetSlide.dataset.title;
+        const subtitle = targetSlide.dataset.subtitle;
+        updateHeader(title, subtitle);
+        document.querySelector('.quiz-content').scrollTop = 0;
+      }, direction === 'back' ? 200 : 100);
+  
+      updateProgress();
+      updateBackButton();
+    }
+  
+    function nextStep() {
+      if (currentStep < 6) {
+        const prevStep = currentStep;
+        currentStep++;
+        showSlide(currentStep, 'forward');
+      }
+    }
+  
+    function prevStep() {
+      if (currentStep > 1) {
+        const prevStep = currentStep;
+        currentStep--;
+        showSlide(currentStep, 'back');
+      }
+    }
+  
+    // Botón volver
+    document.getElementById('backBtn').addEventListener('click', prevStep);
+  
+    // Validar celular chileno (solo números, 8 dígitos)
+    function validarCelular(celular) {
+      const regex = /^[0-9]{8}$/;
+      return regex.test(celular);
+    }
+  
+    // Validar email
+    function validarEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+  
+    // Formatear input de celular (solo números)
+    document.getElementById('celular').addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^0-9]/g, '');
+    });
+  
+    // Pregunta 1: Región Origen
+    document.querySelectorAll('.region-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        formData.regionOrigen = this.dataset.value;
+        setTimeout(() => nextStep(), 300);
+      });
+    });
+  
+    // Pregunta 2: Región Destino
+    document.querySelectorAll('.region-destino-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.region-destino-btn').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        formData.regionDestino = this.dataset.value;
+        setTimeout(() => nextStep(), 300);
+      });
+    });
+  
+    // Pregunta 3: Categoría
+    document.querySelectorAll('.option-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        formData.categoria = this.dataset.value;
+        setTimeout(() => nextStep(), 300);
+      });
+    });
+  
+    // Pregunta 4: Detalles
+    document.querySelector('[data-step="4"] .next-btn').addEventListener('click', function() {
+      const mensaje = document.getElementById('mensaje').value.trim();
+      if (!mensaje) return;
+      formData.mensaje = mensaje;
+      nextStep();
+    });
+  
+    // Submit final con validación
+    document.getElementById('submitBtn').addEventListener('click', function() {
+      const nombre = document.getElementById('nombreCompleto').value.trim();
+      const celular = document.getElementById('celular').value.trim();
+      const email = document.getElementById('email').value.trim();
+      
+      let valido = true;
+  
+      // Resetear errores
+      document.querySelectorAll('input').forEach(input => input.classList.remove('error'));
+      document.querySelectorAll('[id^="error"]').forEach(span => span.style.display = 'none');
+  
+      // Validar nombre
+      if (!nombre || nombre.length < 3) {
+        document.getElementById('nombreCompleto').classList.add('error');
+        document.getElementById('errorNombre').style.display = 'block';
+        valido = false;
+      }
+  
+      // Validar celular
+      if (!validarCelular(celular)) {
+        document.getElementById('celular').classList.add('error');
+        document.getElementById('errorCelular').style.display = 'block';
+        valido = false;
+      }
+  
+      // Validar email
+      if (!validarEmail(email)) {
+        document.getElementById('email').classList.add('error');
+        document.getElementById('errorEmail').style.display = 'block';
+        valido = false;
+      }
+  
+      if (!valido) return;
+  
+      // Guardar datos
+      formData.nombreCompleto = nombre;
+      formData.celular = '+569' + celular;
+      formData.email = email;
+
+      // Completar los campos en el otro formulario con los valores ingresados por el usuario en el quiz
+      const upFormCampos = [
+        { idQuiz: 'nombreCompleto', idUpForm: 'FNAMEUPFORM' },
+        { idQuiz: 'celular', idUpForm: 'TELUPFORM' },
+        { idQuiz: 'email', idUpForm: 'EMAILUPFORM' },
+        { idQuiz: 'categoria', idUpForm: 'CATEGORIAUPFORM' },
+        { idQuiz: 'regionOrigen', idUpForm: 'Region-de-origen-id' },
+        { idQuiz: 'regionDestino', idUpForm: 'REGIONDESTINOUPFORM' },
+        { idQuiz: 'mensaje', idUpForm: 'message' },
+        { idQuiz: 'none', idUpForm: 'ORIGENUPFORM' },
+      ];
+
+      upFormCampos.forEach(campo => {
+        if (document.getElementById(campo.idQuiz)) {
+          const valor = document.getElementById(campo.idQuiz)?.value.trim();
+          const upInput = document.getElementById(campo.idUpForm);
+          upInput.value = valor;
+        } else if(campo.idUpForm == 'ORIGENUPFORM') {
+          const valor = 'COTIZAR-TRANSPORTE-DE-CARGA';
+          const upInput = 'COTIZAR-TRANSPORTE-DE-CARGA';
+          upInput.value = valor;
+        }
+      });
+
+      const UPsubmitButton = document.querySelector(
+          '.button.js-submit-button.button--alt-accent-bg'
+      );
+
+      UPsubmitButton.click();
+      
+      nextStep(); // Mostrar confirmación
+    });
+  
+    // Inicializar
+    updateProgress();
+    updateBackButton();
+    showSlide(1);
+  })();
+  </script>
